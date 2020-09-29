@@ -1,0 +1,7 @@
+The program itself can be compiled
+since the condition for function overloading is satisfied.
+However, if the function is called without argument in main function,
+like
+SimpleFunc();
+both of the call condition is satisfied, resulting in compile error.
+
