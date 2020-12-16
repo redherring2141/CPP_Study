@@ -1,0 +1,6 @@
+References is declared as arguments.
+However, references cannot refer to constants,
+so arguments must be variables.
+Therefore, the call of SwapByRef2 function
+which transfers constants as arguments
+results in compilation error.
