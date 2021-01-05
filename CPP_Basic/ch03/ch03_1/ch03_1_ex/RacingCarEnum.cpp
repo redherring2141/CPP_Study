@@ -1,17 +1,25 @@
 #include <iostream>
 using namespace std;
 
-#define ID_LEN		20
-#define MAX_SPD		200
-#define FUEL_STEP	2
-#define ACC_STEP	10
-#define BRK_STEP	10
+
+namespace CAR_CONST
+{
+	enum
+	{
+		ID_LEN		=20,
+		MAX_SPD		=200,
+		FUEL_STEP	=2,
+		ACC_STEP	=10,
+		BRK_STEP	=10
+	};
+}
+
 
 struct Car
 {
-	char gamerID[ID_LEN];	// Owner ID
-	int fuelGauge;		// Fuel amount
-	int curSpeed;		// Current speed
+	char gamerID[CAR_CONST::ID_LEN];
+	int fuelGauge;
+	int curSpeed;
 
 	void ShowCarState()
 	{
@@ -19,29 +27,32 @@ struct Car
 		cout<<"Fuel amount: "<<fuelGauge<<"%"<<endl;
 		cout<<"Current speed: "<<curSpeed<<"km/h"<<endl<<endl;
 	}
+
 	void Accel()
 	{
 		if(fuelGauge<=0)
 			return;
-		else fuelGauge-=FUEL_STEP;
-
-		if(curSpeed+ACC_STEP>=MAX_SPD)
+		else
+			fuelGauge-=CAR_CONST::FUEL_STEP;
+		
+		if((curSpeed+CAR_CONST::ACC_STEP)>=CAR_CONST::MAX_SPD)
 		{
-			curSpeed=MAX_SPD;
+			curSpeed=CAR_CONST::MAX_SPD;
 			return;
 		}
 
-		curSpeed+=ACC_STEP;
+		curSpeed+=CAR_CONST::ACC_STEP;
 	}
+
 	void Brake()
 	{
-		if(curSpeed<BRK_STEP)
+		if(curSpeed<CAR_CONST::BRK_STEP)
 		{
 			curSpeed=0;
 			return;
 		}
 
-		curSpeed-=BRK_STEP;
+		curSpeed-=CAR_CONST::BRK_STEP;
 	}
 };
 
@@ -58,5 +69,6 @@ int main(void)
 	sped77.Accel();
 	sped77.Brake();
 	sped77.ShowCarState();
+	
 	return 0;
 }

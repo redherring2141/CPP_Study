@@ -37,7 +37,7 @@ void Accel(Car &car)
 	car.curSpeed+=ACC_STEP;
 }
 
-void Break(Car &car)
+void Brake(Car &car)
 {
 	if(car.curSpeed<BRK_STEP)
 	{
@@ -54,12 +54,12 @@ int main(void)
 	Accel(run99);
 	Accel(run99);
 	ShowCarState(run99);
-	Break(run99);
+	Brake(run99);
 	ShowCarState(run99);
 
 	Car sped77={"sped77", 100, 0};
 	Accel(sped77);
-	Break(sped77);
+	Brake(sped77);
 	ShowCarState(sped77);
 	return 0;
 }
